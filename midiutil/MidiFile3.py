@@ -318,43 +318,43 @@ class MIDITrack:
             if thing.type == 'note':
                 event = MIDIEvent()
                 event.type = "NoteOn"
-                event.time = thing.time * TICKSPERBEAT
-                event.pitch = thing.pitch
-                event.volume = thing.volume
-                event.channel = thing.channel
+                event.time = int(thing.time) * TICKSPERBEAT
+                event.pitch = int(thing.pitch)
+                event.volume = int(thing.volume)
+                event.channel = int(thing.channel)
                 event.ord = 3
                 self.MIDIEventList.append(event)
 
                 event = MIDIEvent()
                 event.type = "NoteOff"
-                event.time = (thing.time + thing.duration) * TICKSPERBEAT
-                event.pitch = thing.pitch
-                event.volume = thing.volume
-                event.channel = thing.channel
+                event.time = int(thing.time + thing.duration) * TICKSPERBEAT
+                event.pitch = int(thing.pitch)
+                event.volume = int(thing.volume)
+                event.channel = int(thing.channel)
                 event.ord = 2
                 self.MIDIEventList.append(event)
 
             elif thing.type == 'tempo':
                 event = MIDIEvent()
                 event.type = "Tempo"
-                event.time = thing.time * TICKSPERBEAT
-                event.tempo = thing.tempo
+                event.time = int(thing.time) * TICKSPERBEAT
+                event.tempo = int(thing.tempo)
                 event.ord = 3
                 self.MIDIEventList.append(event)
 
             elif thing.type == 'programChange':
                 event = MIDIEvent()
                 event.type = "ProgramChange"
-                event.time = thing.time * TICKSPERBEAT
-                event.programNumber = thing.programNumber
-                event.channel = thing.channel
+                event.time = int(thing.time) * TICKSPERBEAT
+                event.programNumber = int(thing.programNumber)
+                event.channel = int(thing.channel)
                 event.ord = 1
                 self.MIDIEventList.append(event)
 
             elif thing.type == 'trackName':
                 event = MIDIEvent()
                 event.type = "TrackName"
-                event.time = thing.time * TICKSPERBEAT
+                event.time = int(thing.time) * TICKSPERBEAT
                 event.trackName = thing.trackName
                 event.ord = 0
                 self.MIDIEventList.append(event)
@@ -362,9 +362,9 @@ class MIDITrack:
             elif thing.type == 'controllerEvent':
                 event = MIDIEvent()
                 event.type = "ControllerEvent"
-                event.time = thing.time * TICKSPERBEAT
+                event.time = int(thing.time) * TICKSPERBEAT
                 event.eventType = thing.eventType
-                event.channel = thing.channel
+                event.channel = int(thing.channel)
                 event.paramerter1 = thing.parameter1
                 event.ord = 1
                 self.MIDIEventList.append(event)
@@ -372,7 +372,7 @@ class MIDITrack:
             elif thing.type == 'SysEx':
                 event = MIDIEvent()
                 event.type = "SysEx"
-                event.time = thing.time * TICKSPERBEAT
+                event.time = int(thing.time) * TICKSPERBEAT
                 event.manID = thing.manID
                 event.payload = thing.payload
                 event.ord = 1
@@ -383,7 +383,7 @@ class MIDITrack:
                 event.type = "UniversalSysEx"
                 event.realTime = thing.realTime
                 event.sysExChannel = thing.sysExChannel
-                event.time = thing.time * TICKSPERBEAT
+                event.time = int(thing.time) * TICKSPERBEAT
                 event.code = thing.code
                 event.subcode = thing.subcode
                 event.payload = thing.payload
